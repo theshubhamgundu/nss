@@ -140,6 +140,10 @@ export default function Home() {
             </div>
             <h2>Vignan Institute of<br /><em>Technology and Science.</em></h2>
             <p>Debate. Discuss. Decide.</p>
+            <a className="footer-instagram" href="https://www.instagram.com/vignannss" target="_blank" rel="noreferrer">
+              <img src="/instagram.svg" alt="" />
+              <span>Follow us on Instagram</span>
+            </a>
           </div>
           <div className="footer-contacts">
             <span>Coordinator contacts</span>
