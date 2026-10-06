@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ResolveHeroBackground from "@/components/ResolveHeroBackground";
 
 const branches = [
   "CSE",
@@ -25,6 +26,7 @@ export default function RegisterPage() {
 
   return (
     <main className="register-page">
+      <ResolveHeroBackground />
       <nav className="parliament-nav register-nav">
         <Link href="/" className="event-brand">
           <img src="/nss.svg" alt="Vignan NSS Unit" />
