@@ -148,8 +148,8 @@ export default function Home() {
           <div className="footer-contacts">
             <span>Coordinator contacts</span>
             <a href="tel:9063939760"><b>01</b><span>Sai Teja</span><strong>90639 39760</strong><i>↗</i></a>
-            <a href="tel:+917386716391"><b>02</b><span>Venu</span><strong>+91 73867 16391</strong><i>↗</i></a>
-            <a href="tel:+917702227879"><b>03</b><span>Sanjana</span><strong>+91 77022 27879</strong><i>↗</i></a>
+            <a href="tel:+917386716391"><b>02</b><span>Venu</span><strong>73867 16391</strong><i>↗</i></a>
+            <a href="tel:+917702227879"><b>03</b><span>Sanjana</span><strong>77022 27879</strong><i>↗</i></a>
           </div>
         </div>
         <div className="footer-bottomline"><span>Vignan NSS Unit presents</span><span>© 2026</span></div>
