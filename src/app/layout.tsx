@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "VIGNAN NSS — Debate. Discuss. Decide.",
   description:
     "A mock parliament debate hosted by the Vignan NSS Unit at Vignan Institute of Technology and Science.",
+  icons: {
+    icon: "/nss.svg",
+    shortcut: "/nss.svg",
+    apple: "/nss.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
