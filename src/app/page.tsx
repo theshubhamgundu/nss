@@ -32,7 +32,7 @@ export default function Home() {
         <p className="hero-intro">Your voice. Your argument. Your decision.</p>
         <div className="hero-actions">
           <a className="hero-button" href="#theme">Explore the debate <span>↓</span></a>
-          <ShinyButton href="#contact">Register now <span>→</span></ShinyButton>
+          <ShinyButton href="/register">Register now <span>→</span></ShinyButton>
         </div>
         <div className="event-marquee" aria-label="Parliament event highlights">
           <div className="event-marquee-track">
