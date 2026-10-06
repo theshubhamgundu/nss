@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useState } from "react";
 
 const branches = [
-  "Computer Science and Engineering",
-  "CSE (Artificial Intelligence)",
-  "CSE (Data Science)",
-  "Electronics and Communication Engineering",
-  "Electrical and Electronics Engineering",
-  "Mechanical Engineering",
-  "Civil Engineering",
+  "CSE",
+  "AIML",
+  "CSE (AI&ML)",
+  "CSE (DS)",
+  "AIDS",
+  "IT",
+  "ECE",
+  "EEE",
+  "MECH",
+  "CIV",
+  "EIE",
 ];
 
 const sections = ["A", "B", "C", "D", "E", "F"];
