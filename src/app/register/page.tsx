@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 const branches = [
   "Computer Science and Engineering",
@@ -14,6 +17,8 @@ const sections = ["A", "B", "C", "D", "E", "F"];
 const years = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
 
 export default function RegisterPage() {
+  const [fileName, setFileName] = useState("");
+
   return (
     <main className="register-page">
       <nav className="parliament-nav register-nav">
@@ -32,7 +37,7 @@ export default function RegisterPage() {
         </div>
 
         <div className="register-layout">
-          <form className="registration-form">
+          <form className="registration-form" onSubmit={(event) => event.preventDefault()}>
             <label>
               Full name
               <input type="text" name="name" placeholder="Enter your name" required />
@@ -66,7 +71,21 @@ export default function RegisterPage() {
                 {years.map((year) => <option key={year}>{year}</option>)}
               </select>
             </label>
-            <button type="submit">Submit registration <span>→</span></button>
+            <label className="screenshot-field">
+              Payment screenshot
+              <span className="file-drop">
+                <input
+                  type="file"
+                  name="paymentScreenshot"
+                  accept="image/*"
+                  required
+                  onChange={(event) => setFileName(event.target.files?.[0]?.name ?? "")}
+                />
+                <strong>{fileName || "Drop screenshot here or click to upload"}</strong>
+                <small>PNG, JPG or JPEG</small>
+              </span>
+            </label>
+            <button type="submit">Submit screenshot <span>→</span></button>
           </form>
 
           <aside className="payment-card">
@@ -76,6 +95,9 @@ export default function RegisterPage() {
             <img className="registration-qr" src="/qr.jpeg" alt="Registration payment QR code" />
             <p className="upi-label">UPI ID</p>
             <strong className="upi-id">cnithinreddy07@okicici</strong>
+            <a className="upi-button" href="upi://pay?pa=cnithinreddy07%40okicici&pn=Parliament%202K26&am=100&cu=INR">
+              Pay ₹100 with UPI <span>↗</span>
+            </a>
           </aside>
         </div>
       </div>
