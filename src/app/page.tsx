@@ -27,11 +27,10 @@ export default function Home() {
       <section className="parliament-hero" id="home">
         <div className="hero-kicker">Vignan institute of technology and science 
            NSS Unit presents</div>
-        <img className="hero-logo" src="/par.png" alt="Parliament 2K26" />
+        <img className="hero-logo" src="/par.webp" alt="Parliament 2K26" fetchPriority="high" />
         <p className="hero-tagline">Debate <i>|</i> Discuss <i>|</i> Decide</p>
         <p className="hero-intro">Your voice. Your argument. Your decision.</p>
         <div className="hero-actions">
-          <a className="hero-button" href="#theme">Explore the debate <span>↓</span></a>
           <ShinyButton href="/register">Register now <span>→</span></ShinyButton>
         </div>
         <div className="event-marquee" aria-label="Parliament event highlights">
@@ -94,7 +93,7 @@ export default function Home() {
       <section className="content-section sessions-section" id="sessions">
         <p className="section-label">The day in session</p>
         <h2>Three rounds of <em>serious debate.</em></h2>
-        <img className="session-image" src="/session.png" alt="Parliament session schedule" />
+        <img className="session-image" src="/session.webp" alt="Parliament session schedule" loading="lazy" />
       </section>
 
       <section className="score-section">
@@ -104,18 +103,18 @@ export default function Home() {
           <p>Every participant contributes to the overall score through their individual performance.</p>
         </div>
         <div className="score-card">
-          <img className="scoreboard-image" src="/scoreboard.png" alt="Participant and judge scoreboard breakdown" />
+          <img className="scoreboard-image" src="/scoreboard.webp" alt="Participant and judge scoreboard breakdown" loading="lazy" />
         </div>
       </section>
 
       <section className="outcomes-section">
         <h2>Recognition <em>&amp; Results</em></h2>
-        <img className="plaques-image" src="/plaques.png" alt="Final outcomes plaques" />
+        <img className="plaques-image" src="/plaques.webp" alt="Final outcomes plaques" loading="lazy" />
       </section>
 
       <section className="prize-section" id="contact">
         <div className="prize-images">
-          <img src="/cash-prize.png" alt="₹5,000 cash prize" />
+          <img src="/cash-prize.webp" alt="₹5,000 cash prize" loading="lazy" />
         </div>
         <div className="prize-copy">
           <p className="prize-win-title">Win up to</p>
@@ -125,18 +124,32 @@ export default function Home() {
             <p>Bring your perspective to the house. Make your argument count and stand a chance to win the cash prize.</p>
           </div>
         </div>
-        <div className="contacts">
-          <span className="contacts-label">For enquiries</span>
-          <a href="tel:9063939760"><b>ST</b><span>Sai Teja</span><strong>90639 39760</strong><i>↗</i></a>
-          <a href="tel:+917386716391"><b>VN</b><span>Venu</span><strong>+91 73867 16391</strong><i>↗</i></a>
-          <a href="tel:+917702227879"><b>SJ</b><span>Sanjana</span><strong>+91 77022 27879</strong><i>↗</i></a>
-        </div>
       </section>
 
       <footer className="parliament-footer">
-        <img src="/nss.svg" alt="Vignan NSS Unit" />
-        <strong>PARLIAMENT 2K26</strong>
-        <span>Debate. Discuss. Decide.</span>
+        <ResolveHeroBackground />
+        <div className="footer-topline">
+          <span>VIGNAN NSS</span>
+          <span>PARLIAMENT <b>2K26</b></span>
+        </div>
+        <div className="footer-main">
+          <div className="footer-identity">
+            <div className="footer-logos">
+              <img className="college-logo" src="/college-logo.webp" alt="Vignan Institute of Technology and Science" loading="lazy" />
+              <img className="nss-footer-logo" src="/nss.svg" alt="Vignan NSS Unit" />
+            </div>
+            <h2>Vignan Institute of<br /><em>Technology and Science.</em></h2>
+            <p>Debate. Discuss. Decide.</p>
+          </div>
+          <div className="footer-contacts">
+            <span>Coordinator contacts</span>
+            <a href="tel:9063939760"><b>01</b><span>Sai Teja</span><strong>90639 39760</strong><i>↗</i></a>
+            <a href="tel:+917386716391"><b>02</b><span>Venu</span><strong>+91 73867 16391</strong><i>↗</i></a>
+            <a href="tel:+917702227879"><b>03</b><span>Sanjana</span><strong>+91 77022 27879</strong><i>↗</i></a>
+          </div>
+        </div>
+        <div className="footer-bottomline"><span>Vignan NSS Unit presents</span><span>© 2026</span></div>
+        <small className="footer-credit">Designed and developed by <a href="https://shubhamgundu.in" target="_blank" rel="noreferrer">shubhamgundu.in</a></small>
       </footer>
     </main>
   );

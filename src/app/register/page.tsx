@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import ResolveHeroBackground from "@/components/ResolveHeroBackground";
+import { supabase } from "@/lib/supabase";
 
 const branches = [
   "CSE",
@@ -23,17 +24,56 @@ const years = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
 
 export default function RegisterPage() {
   const [fileName, setFileName] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  async function submitRegistration(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const screenshot = formData.get("paymentScreenshot");
+      if (!(screenshot instanceof File) || screenshot.size === 0) {
+        throw new Error("Please upload your payment screenshot.");
+      }
+
+      const filePath = `${crypto.randomUUID()}-${screenshot.name.replace(/[^a-zA-Z0-9._-]/g, "-")}`;
+      const upload = await supabase.storage.from("payment-screenshots").upload(filePath, screenshot, {
+        contentType: screenshot.type,
+        upsert: false,
+      });
+      if (upload.error) throw upload.error;
+
+      const registration = await supabase.from("registrations").insert({
+        name: formData.get("name"),
+        contact_number: formData.get("contact"),
+        email: formData.get("email"),
+        branch: formData.get("branch"),
+        section: formData.get("section"),
+        year: formData.get("year"),
+        payment_screenshot_path: filePath,
+        payment_amount: 100,
+        payment_status: "submitted",
+      });
+      if (registration.error) {
+        await supabase.storage.from("payment-screenshots").remove([filePath]);
+        throw registration.error;
+      }
+
+      setSubmitted(true);
+    } catch (submissionError) {
+      setError(submissionError instanceof Error ? submissionError.message : "Registration failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <main className="register-page">
       <ResolveHeroBackground />
-      <nav className="parliament-nav register-nav">
-        <Link href="/" className="event-brand">
-          <img src="/nss.svg" alt="Vignan NSS Unit" />
-          <span>VIGNAN NSS</span>
-        </Link>
-      </nav>
-
       <div className="register-shell">
         <Link href="/" className="register-back">← Back to home</Link>
         <div className="register-heading">
@@ -43,7 +83,17 @@ export default function RegisterPage() {
         </div>
 
         <div className="register-layout">
-          <form className="registration-form" onSubmit={(event) => event.preventDefault()}>
+          {submitted ? (
+            <div className="registration-success">
+              <p className="section-label">Registration complete</p>
+              <h2>You&apos;re in the <em>house.</em></h2>
+              <p>Your registration has been submitted successfully. Join the WhatsApp group for further updates.</p>
+              <a className="shiny-cta whatsapp-button" href="https://chat.whatsapp.com/HJ47Q80rsv570ZCQUOTZKx" target="_blank" rel="noreferrer">
+                <span>Join WhatsApp group <b>↗</b></span>
+              </a>
+            </div>
+          ) : (
+          <form className="registration-form" onSubmit={submitRegistration}>
             <label>
               Full name
               <input type="text" name="name" placeholder="Enter your name" required />
@@ -91,8 +141,10 @@ export default function RegisterPage() {
                 <small>PNG, JPG or JPEG</small>
               </span>
             </label>
-            <button className="shiny-cta registration-submit" type="submit"><span>Submit screenshot <b>→</b></span></button>
+            {error && <p className="registration-error" role="alert">{error}</p>}
+            <button className="shiny-cta registration-submit" type="submit" disabled={isSubmitting}><span>{isSubmitting ? "Submitting..." : "Submit screenshot"} <b>→</b></span></button>
           </form>
+          )}
 
           <aside className="payment-card">
             <p className="section-label">Complete your registration</p>
