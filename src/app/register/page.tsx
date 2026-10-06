@@ -89,7 +89,7 @@ export default function RegisterPage() {
                 <small>PNG, JPG or JPEG</small>
               </span>
             </label>
-            <button type="submit">Submit screenshot <span>→</span></button>
+            <button className="shiny-cta registration-submit" type="submit"><span>Submit screenshot <b>→</b></span></button>
           </form>
 
           <aside className="payment-card">
@@ -99,8 +99,8 @@ export default function RegisterPage() {
             <img className="registration-qr" src="/qr.jpeg" alt="Registration payment QR code" />
             <p className="upi-label">UPI ID</p>
             <strong className="upi-id">cnithinreddy07@okicici</strong>
-            <a className="upi-button" href="upi://pay?pa=cnithinreddy07%40okicici&pn=Parliament%202K26&am=100&cu=INR">
-              Pay ₹100 with UPI <span>↗</span>
+            <a className="shiny-cta upi-button" href="upi://pay?pa=cnithinreddy07%40okicici&pn=Parliament%202K26&am=100&cu=INR">
+              <span>Pay ₹100 with UPI <b>↗</b></span>
             </a>
           </aside>
         </div>
