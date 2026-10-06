@@ -2,9 +2,9 @@ import ResolveHeroBackground from "@/components/ResolveHeroBackground";
 import ShinyButton from "@/components/ShinyButton";
 
 const teams = [
-  ["Ruling Party", "35 Seats", "Present and defend the Digital Youth Protection Bill, with the objective of getting the bill passed.", "🏛️"],
-  ["Opposition Party", "30 Seats", "Challenge and oppose the bill, with the objective of preventing it from being passed.", "⚖️"],
-  ["Independent Candidates", "25 Seats", "Present alternative viewpoints, solutions and amendments to the proposed bill.", "🕊️"],
+  ["Ruling Party", "SEATS", "Present and defend the Digital Youth Protection Bill, with the objective of getting the bill passed.", "🏛️"],
+  ["Opposition Party", "SEATS", "Challenge and oppose the bill, with the objective of preventing it from being passed.", "⚖️"],
+  ["Independent Candidates", "SEATS", "Present alternative viewpoints, solutions and amendments to the proposed bill.", "🕊️"],
 ];
 
 const sessions = [
